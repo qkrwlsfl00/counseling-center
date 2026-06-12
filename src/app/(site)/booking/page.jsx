@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { CheckCircle2, User, Phone, ClipboardList, Loader2 } from 'lucide-react';
-import Button from '../../components/ui/Button';
+import Button from '../../../components/ui/Button';
 
 const Booking = () => {
   const router = useRouter();
