@@ -60,7 +60,7 @@ const NoticeDetail = async ({ params }) => {
 
   if (!notice) {
     return (
-      <div className="w-full bg-dream-beige/10 py-24 px-4 min-h-[70vh] flex flex-col items-center justify-center">
+      <div className="w-full bg-[#fcfcfc] py-24 px-4 min-h-[70vh] flex flex-col items-center justify-center">
         <div className="bg-white p-8 rounded-2xl shadow-sm text-center max-w-md w-full">
           <p className="text-red-500 mb-6 font-bold">게시글이 존재하지 않습니다.</p>
           <Link 
@@ -85,7 +85,7 @@ const NoticeDetail = async ({ params }) => {
   };
 
   return (
-    <div className="w-full bg-dream-beige/10 py-12 md:py-16 px-4 min-h-[70vh]">
+    <div className="w-full bg-[#fcfcfc] py-12 md:py-16 px-4 min-h-[70vh]">
       <div className="max-w-4xl mx-auto">
         <Link 
           href="/notice"

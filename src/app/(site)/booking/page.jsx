@@ -95,7 +95,7 @@ const Booking = () => {
 
   if (isSubmitted) {
     return (
-      <div className="w-full min-h-[75vh] flex items-center justify-center p-4 bg-dream-beige/10">
+      <div className="w-full min-h-[75vh] flex items-center justify-center p-4 bg-[#fcfcfc]">
         <div className="bg-white p-8 md:p-16 rounded-[2rem] shadow-sm text-center max-w-lg w-full border border-gray-100">
           <CheckCircle2 className="w-24 h-24 text-green-400 mx-auto mb-6" />
           <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-4">예약 신청이 접수되었습니다!</h2>
@@ -112,7 +112,7 @@ const Booking = () => {
   }
 
   return (
-    <div className="w-full bg-dream-beige/20 py-16 px-4">
+    <div className="w-full bg-[#fcfcfc] py-16 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-block px-4 py-1.5 rounded-full bg-dream-blue text-white font-bold text-sm mb-4 tracking-wider">

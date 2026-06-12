@@ -87,7 +87,7 @@ const Programs = () => {
   ];
 
   return (
-    <div className="w-full bg-dream-beige/30 py-12 px-4 min-h-[80vh]">
+    <div className="w-full bg-[#fcfcfc] py-12 px-4 min-h-[80vh]">
       <div className="max-w-6xl mx-auto">
         {/* Page Title */}
         <div className="text-center mb-16">

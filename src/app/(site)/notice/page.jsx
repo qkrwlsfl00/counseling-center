@@ -30,7 +30,7 @@ const Notice = async () => {
   };
 
   return (
-    <div className="w-full bg-dream-beige/10 py-16 px-4 min-h-[70vh]">
+    <div className="w-full bg-[#fcfcfc] py-16 px-4 min-h-[70vh]">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-end mb-8 border-b-2 border-dream-blue pb-4">
           <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 pr-6 inline-block">센터 소식 및 공지사항</h1>
