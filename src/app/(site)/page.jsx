@@ -4,10 +4,11 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '../../components/ui/Button';
 import LocationSection from '../../components/layout/LocationSection';
+import CenterGallery from '../../components/common/CenterGallery';
 import { Heart, Brain, Music, Smile, BookOpen, FileText, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 const ProgramCard = ({ icon: Icon, title, desc, color, onClick }) => (
-  <div 
+  <div
     onClick={onClick}
     className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-dream-blue/50 group cursor-pointer"
   >
@@ -39,10 +40,10 @@ const Home = () => {
             <span className="text-sm font-bold">* 정부 지원 발달재활서비스 지정 전문가 코칭 기관</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-            아이의 보폭에 맞춘<br/><span className="text-dream-blue">따뜻한 동행</span>
+            아이의 보폭에 맞춘<br /><span className="text-dream-blue">따뜻한 동행</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed font-semibold">
-            단순한 문제 해결을 넘어, 아이가 지닌 고유한 잠재력을 발견하고<br className="hidden md:block"/>가족 모두가 편안해지는 길을 제안합니다.
+            단순한 문제 해결을 넘어, 아이가 지닌 고유한 잠재력을 발견하고<br className="hidden md:block" />가족 모두가 편안해지는 길을 제안합니다.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="primary" size="lg" onClick={() => router.push('/booking')} className="shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all rounded-full px-8 text-lg">
@@ -62,40 +63,40 @@ const Home = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-4">진행 중인 코칭 프로그램</h2>
             <p className="text-gray-600 font-bold">신뢰할 수 있는 전문가가 1:1 맞춤형 솔루션을 제안합니다.</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ProgramCard 
-              icon={Smile} title="놀이/심리 치료" 
+            <ProgramCard
+              icon={Smile} title="놀이/심리 치료"
               desc="놀이를 매개체로 아이의 불안을 덜어내고 긍정적인 정서 발달을 이끌어냅니다."
               color="bg-[#Fdfcf0]"
               onClick={() => router.push('/programs#therapy')}
             />
-            <ProgramCard 
-              icon={Brain} title="언어 치료" 
+            <ProgramCard
+              icon={Brain} title="언어 치료"
               desc="아이의 발달 수준을 고려하여 자연스러운 의사소통 능력을 길러줍니다."
               color="bg-[#F4FAFD]"
               onClick={() => router.push('/programs#therapy')}
             />
-            <ProgramCard 
-              icon={Music} title="음악 치료" 
+            <ProgramCard
+              icon={Music} title="음악 치료"
               desc="음악적 활동을 통해 창의성과 사회성을 기르고 심리적 안정을 도모합니다."
               color="bg-[#F8F5F9]"
               onClick={() => router.push('/programs#therapy')}
             />
-            <ProgramCard 
-              icon={BookOpen} title="학습 코칭" 
+            <ProgramCard
+              icon={BookOpen} title="학습 코칭"
               desc="아이 스스로 흥미를 느끼고 학습하는 올바른 기본기를 잡아줍니다."
               color="bg-[#FEFCE8]"
               onClick={() => router.push('/programs#learning')}
             />
-            <ProgramCard 
-              icon={FileText} title="종합 심리 검사" 
+            <ProgramCard
+              icon={FileText} title="종합 심리 검사"
               desc="정확한 진단 시스템을 활용해 아이의 지능, 정서, 행동을 입체적으로 파악합니다."
               color="bg-[#F2FCF1]"
               onClick={() => router.push('/programs#learning')}
             />
-            <ProgramCard 
-              icon={Heart} title="부모/양육 상담" 
+            <ProgramCard
+              icon={Heart} title="부모/양육 상담"
               desc="양육 과정에서 겪는 어려움을 객관적으로 진단하고 올바른 방향을 제시합니다."
               color="bg-[#FEF8F4]"
               onClick={() => router.push('/programs#therapy')}
@@ -103,9 +104,9 @@ const Home = () => {
           </div>
 
           <div className="mt-16 text-center">
-            <Button 
-              variant="outline" 
-              size="lg" 
+            <Button
+              variant="outline"
+              size="lg"
               onClick={() => router.push('/programs')}
               className="group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto"
             >
@@ -140,20 +141,44 @@ const Home = () => {
                 꼼꼼한 초기 상담을 통해 아이의 상태에 꼭 필요한 코칭만을 제안하여 불필요한 장기 프로그램을 강요하지 않습니다.
               </p>
             </div>
-            
+
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-dream-blue" />
                 <h3 className="font-bold text-gray-800 text-lg">투명한 운영 방식</h3>
               </div>
               <p className="text-sm text-gray-700 leading-relaxed font-semibold">
-                정부 지원 바우처 사용 및 센터 비용에 대해 상세하게 안내해 드립니다. 아이들의 건강한 발육을 위한 정직한 운영을 약속합니다.
+                정부 지원 바우처 사용 및 센터 비용에 대해 상세하게 안내해 드립니다. 아이들의 건강한 성장을 위한 정직한 운영을 약속합니다.
               </p>
             </div>
           </div>
           <div className="mt-12 flex items-center justify-center gap-1 text-gray-500">
             <span className="text-sm">* 정부 지원 발달재활서비스 지정 전문가 코칭 기관</span>
           </div>
+        </div>
+      </section>
+
+      {/* Center Tour Gallery Section */}
+      <section className="py-24 px-4 bg-white border-b border-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">센터 둘러보기</h2>
+            <p className="text-gray-600 font-bold">아이들과 부모님이 안심하고 편안하게 머무를 수 있는 드림학습코칭상담센터 공간입니다.</p>
+          </div>
+
+          <CenterGallery limit={4} linkHref="/about#gallery" />
+
+           <div className="mt-16 text-center">
+             <Button
+               variant="outline"
+               size="lg"
+               onClick={() => router.push('/about#gallery')}
+               className="group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto"
+             >
+               센터 사진 더보기
+               <span className="group-hover:translate-x-1 transition-transform">→</span>
+             </Button>
+           </div>
         </div>
       </section>
 

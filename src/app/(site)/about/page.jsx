@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heart, ShieldCheck, Sun, Users } from 'lucide-react';
+import CenterGallery from '../../../components/common/CenterGallery';
 
 export const metadata = {
   title: '센터 소개 | 드림학습코칭상담센터',
@@ -51,18 +52,12 @@ const About = () => {
       </div>
 
       {/* 센터 둘러보기 */}
-      <div className="max-w-5xl mx-auto">
+      <div id="gallery" className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-4">센터 둘러보기</h2>
-          <p className="text-gray-600">아늑하고 편안한 드림학습코칭상담센터의 내부 모습을 소개합니다.</p>
+          <p className="text-gray-600 font-medium">아늑하고 편안한 드림학습코칭상담센터의 내부 모습을 소개합니다.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div key={item} className="aspect-video bg-gray-100 rounded-xl flex items-center justify-center border border-gray-200 shadow-sm overflow-hidden group">
-              <span className="text-gray-400 font-medium group-hover:scale-105 transition-transform">사진 준비 중</span>
-            </div>
-          ))}
-        </div>
+        <CenterGallery />
       </div>
     </div>
   );
