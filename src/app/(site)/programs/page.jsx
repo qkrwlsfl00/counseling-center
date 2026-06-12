@@ -3,7 +3,7 @@ import { Heart, Brain, Music, Smile, BookOpen, Users, Target, ShieldCheck } from
 
 const ProgramDetailCard = ({ icon: Icon, title, catchphrase, desc, features, color }) => {
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col h-full">
+    <div className="bg-white rounded-2xl p-8 border border-gray-100 flex flex-col h-full">
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-5">
         <div className={`w-16 h-16 ${color} rounded-full flex items-center justify-center shrink-0`}>
           <Icon className="w-8 h-8 text-gray-800" />
