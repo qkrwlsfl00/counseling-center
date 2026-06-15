@@ -44,9 +44,9 @@ const About = () => {
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-200 rounded-tr-full opacity-20 transform -translate-x-5 translate-y-5"></div>
         
         <ShieldCheck className="w-12 h-12 text-dream-blue mx-auto mb-4 relative z-10" />
-        <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-4 border-b border-yellow-300 inline-block px-10 relative z-10">정부 지원 바우처 지정 우수 기관</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-4 border-b border-yellow-300 inline-block px-4 md:px-10 relative z-10">정부 지원 바우처 지정 우수 기관</h2>
         <p className="text-gray-700 leading-relaxed mb-6 mt-2 relative z-10 text-lg">
-          우리 센터는 보건복지부가 관할하는 공식 <strong>'발달재활서비스'</strong> 및 <strong>'우리아이심리지원서비스'</strong> 제공 기관입니다.<br/>
+          우리 센터는 보건복지부가 관할하는 공식 <strong>'발달재활서비스'</strong> 및 <strong>'우리아이심리지원서비스'</strong> 제공 기관입니다.<br className="hidden md:block" />
           엄격한 시설 기준을 통과한 검증된 인력과 투명한 운영을 바탕으로 안정적인 서비스를 제공합니다.
         </p>
       </div>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Button from '../../components/ui/Button';
 import LocationSection from '../../components/layout/LocationSection';
 import CenterGallery from '../../components/common/CenterGallery';
-import { Heart, Brain, Music, Smile, BookOpen, FileText, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Heart, Brain, Music, Smile, BookOpen, Users, Target, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 const ProgramCard = ({ icon: Icon, title, desc, color, onClick }) => (
   <div
@@ -67,39 +67,39 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ProgramCard
               icon={Smile} title="놀이/심리 치료"
-              desc="놀이를 매개체로 아이의 불안을 덜어내고 긍정적인 정서 발달을 이끌어냅니다."
+              desc="놀이를 매개로 아이가 자신의 감정을 표출하며 마음의 안정을 찾도록 돕습니다."
               color="bg-[#Fdfcf0]"
-              onClick={() => router.push('/programs#therapy')}
+              onClick={() => router.push('/programs')}
             />
             <ProgramCard
               icon={Brain} title="언어 치료"
-              desc="아이의 발달 수준을 고려하여 자연스러운 의사소통 능력을 길러줍니다."
+              desc="전문적인 진단을 바탕으로 발달 수준에 맞춘 체계적인 언어 자극을 제공합니다."
               color="bg-[#F4FAFD]"
-              onClick={() => router.push('/programs#therapy')}
+              onClick={() => router.push('/programs')}
             />
             <ProgramCard
-              icon={Music} title="음악 치료"
-              desc="음악적 활동을 통해 창의성과 사회성을 기르고 심리적 안정을 도모합니다."
+              icon={Music} title="미술 치료"
+              desc="창작 활동을 통해 내면의 감정을 표출하고, 예술적 치유 경험을 제공합니다."
               color="bg-[#F8F5F9]"
-              onClick={() => router.push('/programs#therapy')}
+              onClick={() => router.push('/programs')}
             />
             <ProgramCard
-              icon={BookOpen} title="학습 코칭"
-              desc="아이 스스로 흥미를 느끼고 학습하는 올바른 기본기를 잡아줍니다."
-              color="bg-[#FEFCE8]"
-              onClick={() => router.push('/programs#learning')}
-            />
-            <ProgramCard
-              icon={FileText} title="종합 심리 검사"
-              desc="정확한 진단 시스템을 활용해 아이의 지능, 정서, 행동을 입체적으로 파악합니다."
-              color="bg-[#F2FCF1]"
-              onClick={() => router.push('/programs#learning')}
-            />
-            <ProgramCard
-              icon={Heart} title="부모/양육 상담"
-              desc="양육 과정에서 겪는 어려움을 객관적으로 진단하고 올바른 방향을 제시합니다."
+              icon={Heart} title="심리운동"
+              desc="신체 활동을 통해 자신의 몸을 탐색하고 건강한 자아상을 확립합니다."
               color="bg-[#FEF8F4]"
-              onClick={() => router.push('/programs#therapy')}
+              onClick={() => router.push('/programs')}
+            />
+            <ProgramCard
+              icon={BookOpen} title="인지학습치료"
+              desc="주의집중력, 사고력 등 학습 기초 역량을 체계적으로 훈련합니다."
+              color="bg-[#FEFCE8]"
+              onClick={() => router.push('/programs')}
+            />
+            <ProgramCard
+              icon={Users} title="사회성집단"
+              desc="또래 집단 활동을 통해 사회적 규칙을 익히고 소통 능력을 기릅니다."
+              color="bg-[#F2FCF1]"
+              onClick={() => router.push('/programs')}
             />
           </div>
 

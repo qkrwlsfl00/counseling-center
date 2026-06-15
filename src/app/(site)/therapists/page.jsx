@@ -69,7 +69,7 @@ const Therapists = () => {
         <div className="text-center mb-16">
           <h1 className="text-3xl font-bold text-gray-900 mb-5">선생님 소개</h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-            아이들의 마음에 귀 기울이고, 가족의 행복을 위해 고민하는<br />
+            아이들의 마음에 귀 기울이고, 가족의 행복을 위해 고민하는<br className="hidden md:block" />
             드림학습코칭상담센터의 분야별 전문가들을 소개합니다.
           </p>
         </div>

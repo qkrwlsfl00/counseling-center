@@ -83,3 +83,12 @@ export const resourceBoardDetailQuery = groq`
     }
   }
 `;
+
+export const centerGalleryQuery = groq`
+  *[_type == "centerGallery"][0] {
+    "images": images[] {
+      "src": asset->url,
+      "alt": alt
+    }
+  }
+`;

@@ -46,13 +46,13 @@ const LocationSection = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-dream-beige/50 p-1.5 rounded-full">
+        <div className="flex justify-center mb-10 w-full px-2">
+          <div className="flex bg-dream-beige/50 p-1 rounded-full w-full max-w-md">
             {branches.map((b, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveTab(idx)}
-                className={`px-6 py-3 rounded-full text-base font-bold transition-all duration-300 ${
+                className={`flex-1 text-center py-2.5 px-3 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm md:text-base font-bold transition-all duration-300 truncate ${
                   activeTab === idx
                     ? 'bg-[#8BA888] text-white shadow-md'
                     : 'text-gray-500 hover:text-gray-800'

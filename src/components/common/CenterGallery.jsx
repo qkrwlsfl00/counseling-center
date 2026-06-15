@@ -4,25 +4,28 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
-
-const PHOTOS = [
-  { src: '/photos/KakaoTalk_20260613_000754012.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_05.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_01.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260613_000754012_01.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_02.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260613_000754012_02.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_03.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_07.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_04.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260609_171610904_06.jpg', alt: '드림학습코칭상담센터 전경' },
-  { src: '/photos/KakaoTalk_20260613_000754012_03.jpg', alt: '드림학습코칭상담센터 전경' }
-];
+import { client } from '../../sanity/client';
+import { centerGalleryQuery } from '../../sanity/queries';
 
 const CenterGallery = ({ limit = null, linkHref = null }) => {
   const [activeIndex, setActiveIndex] = useState(null);
-  const items = limit ? PHOTOS.slice(0, limit) : PHOTOS;
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const data = await client.fetch(centerGalleryQuery);
+        if (data && data.images && data.images.length > 0) {
+          setPhotos(data.images);
+        }
+      } catch (error) {
+        console.error("Failed to fetch gallery photos from Sanity:", error);
+      }
+    };
+    fetchPhotos();
+  }, []);
+
+  const items = limit ? photos.slice(0, limit) : photos;
 
   const openLightbox = (index) => {
     setActiveIndex(index);
@@ -88,7 +91,7 @@ const CenterGallery = ({ limit = null, linkHref = null }) => {
             <>
               <Image 
                 src={photo.src} 
-                alt={photo.alt}
+                alt={photo.alt || '드림학습코칭상담센터 사진'}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -162,7 +165,7 @@ const CenterGallery = ({ limit = null, linkHref = null }) => {
             <div className="relative w-full h-full max-h-[75vh] md:max-h-[80vh] flex items-center justify-center select-none">
               <Image 
                 src={items[activeIndex].src} 
-                alt={items[activeIndex].alt}
+                alt={items[activeIndex].alt || '드림학습코칭상담센터 사진'}
                 fill
                 sizes="(max-width: 1200px) 100vw, 1200px"
                 className="object-contain transition-all duration-300 ease-in-out"

@@ -28,14 +28,14 @@ const Header = () => {
 
   const handleLocationClick = (e, isMobile = false) => {
     if (isMobile) handleMobileNavClick();
-    if (window.location.pathname === '/') { 
-      e.preventDefault(); 
-      document.getElementById('location')?.scrollIntoView({ behavior: 'smooth' }); 
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      document.getElementById('location')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <header className="w-full bg-white shadow-sm sticky top-0 z-50">
+    <header className="w-full bg-white border-b border-gray-400 sticky top-0 z-50">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -50,7 +50,7 @@ const Header = () => {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center space-x-7 font-brand text-[1.2rem] tracking-tight">
             <Link href="/" className="text-gray-700 hover:text-dream-blue font-bold transition-colors">홈</Link>
-            
+
             <DropdownMenu title="센터 안내" href="/about">
               <Link href="/about" className="block px-4 py-2 text-base text-gray-700 hover:bg-dream-blue/5 hover:text-dream-blue font-bold transition-colors">센터 소개</Link>
               <Link href="/therapists" className="block px-4 py-2 text-base text-gray-700 hover:bg-dream-blue/5 hover:text-dream-blue font-bold transition-colors">선생님 소개</Link>
@@ -66,10 +66,10 @@ const Header = () => {
               <Link href="/news" className="block px-4 py-2 text-base text-gray-700 hover:bg-dream-blue/5 hover:text-dream-blue font-bold transition-colors">센터 소식</Link>
               <Link href="/resource" className="block px-4 py-2 text-base text-gray-700 hover:bg-dream-blue/5 hover:text-dream-blue font-bold transition-colors">자료실</Link>
             </DropdownMenu>
-            
-            <a 
-              href="/#location" 
-              onClick={(e) => handleLocationClick(e, false)} 
+
+            <a
+              href="/#location"
+              onClick={(e) => handleLocationClick(e, false)}
               className="text-gray-700 hover:text-dream-blue font-bold transition-colors py-2"
             >
               오시는 길
@@ -85,7 +85,7 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <div className="flex items-center lg:hidden">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-600 hover:text-gray-900 focus:outline-none p-2"
             >
@@ -100,7 +100,7 @@ const Header = () => {
         <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg animate-in slide-in-from-top-2 font-brand tracking-tight max-h-[80vh] overflow-y-auto">
           <div className="px-4 pt-2 pb-6 space-y-1">
             <Link href="/" onClick={handleMobileNavClick} className="block px-3 py-3 rounded-md text-lg font-bold text-gray-800 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors">홈</Link>
-            
+
             <div className="pt-4 pb-2">
               <Link href="/about" onClick={handleMobileNavClick} className="block px-3 text-sm font-bold text-dream-blue/70 mb-2">센터 안내</Link>
               <Link href="/about" onClick={handleMobileNavClick} className="block px-3 py-2.5 pl-6 rounded-md text-base font-bold text-gray-700 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors">센터 소개</Link>
@@ -120,9 +120,9 @@ const Header = () => {
               <Link href="/resource" onClick={handleMobileNavClick} className="block px-3 py-2.5 pl-6 rounded-md text-base font-bold text-gray-700 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors">자료실</Link>
             </div>
 
-            <a 
-              href="/#location" 
-              onClick={(e) => handleLocationClick(e, true)} 
+            <a
+              href="/#location"
+              onClick={(e) => handleLocationClick(e, true)}
               className="block px-3 py-3 rounded-md text-lg font-bold text-gray-800 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors mt-2 border-t border-gray-50"
             >
               오시는 길
