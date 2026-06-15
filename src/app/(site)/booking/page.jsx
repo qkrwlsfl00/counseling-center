@@ -59,27 +59,22 @@ const Booking = () => {
     if (validate()) {
       setIsSubmitting(true);
       try {
-        const formspreeUrl = process.env.NEXT_PUBLIC_FORMSPREE_URL;
-        if (formspreeUrl) {
-          try {
-            await fetch(formspreeUrl, {
-              method: 'POST',
-              body: JSON.stringify({
-                '보호자/아동 이름': formData.name,
-                '연락처': formData.phone,
-                '상담 희망 분야': formData.program,
-                '바우처 대상 여부': formData.isVoucher ? '예' : '아니오',
-                '남기실 말씀': formData.memo || '없음'
-              }),
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-              }
-            });
-          } catch (emailError) {
-            console.error("Email sending failed:", emailError);
-            // 메일 전송 실패해도 DB 저장은 완료되었으므로 예약 완료 처리는 계속 진행
+        const response = await fetch('/api/booking', {
+          method: 'POST',
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            program: formData.program,
+            isVoucher: formData.isVoucher,
+            memo: formData.memo
+          }),
+          headers: {
+            'Content-Type': 'application/json'
           }
+        });
+
+        if (!response.ok) {
+          throw new Error('예약 접수 중 오류가 발생했습니다.');
         }
 
         setIsSubmitted(true);
