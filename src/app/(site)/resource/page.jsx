@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Calendar, ChevronRight } from 'lucide-react';
 import { client } from '../../../sanity/client';
-import { noticesQuery } from '../../../sanity/queries';
+import { resourceBoardsQuery } from '../../../sanity/queries';
 
 
 export const metadata = {
@@ -12,10 +12,10 @@ export const metadata = {
 
 export const revalidate = 60; // ISR: 60초마다 재검증
 
-const Notice = async () => {
+const Resource = async () => {
   let notices = [];
   try {
-    notices = await client.fetch(noticesQuery);
+    notices = await client.fetch(resourceBoardsQuery);
   } catch (error) {
     console.error("Sanity fetch error:", error.message);
   }
@@ -24,7 +24,7 @@ const Notice = async () => {
     <div className="w-full bg-[#fcfcfc] py-16 px-4 min-h-[70vh]">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-end mb-8 border-b-2 border-dream-blue pb-4">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 pr-6 inline-block">공지사항</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 pr-6 inline-block">자료실</h1>
         </div>
         
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden min-h-[300px]">
@@ -37,7 +37,7 @@ const Notice = async () => {
               {notices.map((notice) => (
                 <li key={notice._id}>
                   <Link 
-                    href={`/notice/${notice._id}`}
+                    href={`/resource/${notice._id}`}
                     className="hover:bg-dream-blue/5 transition-colors cursor-pointer p-5 flex items-center justify-between group block"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6 flex-grow">
@@ -66,4 +66,4 @@ const Notice = async () => {
   );
 };
 
-export default Notice;
+export default Resource;

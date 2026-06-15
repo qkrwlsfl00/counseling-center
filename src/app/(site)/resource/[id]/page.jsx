@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, ArrowLeft, FileDown } from 'lucide-react';
 import { client } from '../../../../sanity/client';
-import { noticeDetailQuery } from '../../../../sanity/queries';
+import { resourceBoardDetailQuery } from '../../../../sanity/queries';
 import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../../../sanity/image';
 
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
   let notice = null;
   try {
-    notice = await client.fetch(noticeDetailQuery, { id });
+    notice = await client.fetch(resourceBoardDetailQuery, { id });
   } catch (e) {
     console.error("Sanity fetch error in metadata:", e.message);
   }
@@ -49,11 +49,11 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const NoticeDetail = async ({ params }) => {
+const ResourceDetail = async ({ params }) => {
   const { id } = await params;
   let notice = null;
   try {
-    notice = await client.fetch(noticeDetailQuery, { id });
+    notice = await client.fetch(resourceBoardDetailQuery, { id });
   } catch (e) {
     console.error("Sanity fetch error in page:", e.message);
   }
@@ -64,7 +64,7 @@ const NoticeDetail = async ({ params }) => {
         <div className="bg-white p-8 rounded-2xl shadow-sm text-center max-w-md w-full">
           <p className="text-red-500 mb-6 font-bold">게시글이 존재하지 않습니다.</p>
           <Link 
-            href="/notice"
+            href="/resource"
             className="bg-dream-blue text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-600 transition-colors inline-block"
           >
             목록으로 돌아가기
@@ -78,7 +78,7 @@ const NoticeDetail = async ({ params }) => {
     <div className="w-full bg-[#fcfcfc] py-12 md:py-16 px-4 min-h-[70vh]">
       <div className="max-w-4xl mx-auto">
         <Link 
-          href="/notice"
+          href="/resource"
           className="flex items-center text-gray-500 hover:text-dream-blue transition-colors mb-6 font-medium group w-fit"
         >
           <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -154,4 +154,4 @@ const NoticeDetail = async ({ params }) => {
   );
 };
 
-export default NoticeDetail;
+export default ResourceDetail;

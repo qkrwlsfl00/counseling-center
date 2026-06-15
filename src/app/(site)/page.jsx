@@ -43,7 +43,7 @@ const Home = () => {
             아이의 보폭에 맞춘<br /><span className="text-dream-blue">따뜻한 동행</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed font-semibold">
-            단순한 문제 해결을 넘어, 아이가 지닌 고유한 잠재력을 발견하고<br className="hidden md:block" />가족 모두가 편안해지는 길을 제안합니다.
+            단순한 문제 해결을 넘어, 아이가 지닌 고유한 잠재력을 발견하고 <br className="hidden md:block" />가족 모두가 편안해지는 길을 제안합니다.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="primary" size="lg" onClick={() => router.push('/booking')} className="shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all rounded-full px-8 text-lg">
@@ -168,17 +168,17 @@ const Home = () => {
 
           <CenterGallery limit={4} linkHref="/about#gallery" />
 
-           <div className="mt-16 text-center">
-             <Button
-               variant="outline"
-               size="lg"
-               onClick={() => router.push('/about#gallery')}
-               className="group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto"
-             >
-               센터 사진 더보기
-               <span className="group-hover:translate-x-1 transition-transform">→</span>
-             </Button>
-           </div>
+          <div className="mt-16 text-center">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => router.push('/about#gallery')}
+              className="group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto"
+            >
+              센터 사진 더보기
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Button>
+          </div>
         </div>
       </section>
 

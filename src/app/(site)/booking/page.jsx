@@ -59,7 +59,7 @@ const Booking = () => {
     if (validate()) {
       setIsSubmitting(true);
       try {
-        const formspreeUrl = process.env.NEXT_PUBLIC_FORMSPREE_URL || import.meta.env?.VITE_FORMSPREE_URL;
+        const formspreeUrl = process.env.NEXT_PUBLIC_FORMSPREE_URL;
         if (formspreeUrl) {
           try {
             await fetch(formspreeUrl, {

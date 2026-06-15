@@ -1,16 +1,15 @@
-export const notice = {
-  name: 'notice',
-  title: '공지사항 (게시판 글 작성)',
+export const resourceBoard = {
+  name: 'resourceBoard',
+  title: '자료실 (게시판 글 작성)',
   type: 'document',
   fields: [
     {
       name: 'title',
       title: '제목',
-      description: '웹사이트 공지사항 목록에 보여질 제목을 입력해주세요.',
+      description: '웹사이트 자료실 목록에 보여질 제목을 입력해주세요.',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
-
     {
       name: 'date',
       title: '작성 날짜',
@@ -47,7 +46,7 @@ export const notice = {
     {
       name: 'attachments',
       title: '첨부 파일',
-      description: 'PDF, HWP, DOCX 등의 파일을 첨부할 수 있습니다. (선택사항)',
+      description: 'PDF, HWP, DOCX 등의 자료 파일을 첨부할 수 있습니다. (선택사항)',
       type: 'array',
       of: [{ 
         type: 'file',

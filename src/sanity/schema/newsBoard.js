@@ -1,16 +1,15 @@
-export const notice = {
-  name: 'notice',
-  title: '공지사항 (게시판 글 작성)',
+export const newsBoard = {
+  name: 'newsBoard',
+  title: '센터 소식 (게시판 글 작성)',
   type: 'document',
   fields: [
     {
       name: 'title',
       title: '제목',
-      description: '웹사이트 공지사항 목록에 보여질 제목을 입력해주세요.',
+      description: '웹사이트 센터 소식 목록에 보여질 제목을 입력해주세요.',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
-
     {
       name: 'date',
       title: '작성 날짜',
