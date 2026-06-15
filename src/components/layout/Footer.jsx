@@ -14,7 +14,10 @@ const Footer = () => {
               className="text-lg font-bold text-dream-blue mb-4 flex items-center gap-2 select-none font-brand tracking-tight"
             >
               <img src={logo.src || logo} alt="드림학습코칭상담센터 로고" className="w-8 h-8 object-contain" />
-              <span>드림학습코칭상담센터</span>
+              <div className="flex flex-col leading-tight">
+                <span>드림학습코칭상담센터</span>
+                <span className="text-[0.9rem] opacity-90">드림심리상담연구소</span>
+              </div>
             </h3>
             <p className="text-gray-500 text-sm leading-relaxed">
               꿈을 키우는 아이, 안심하는 부모.<br />

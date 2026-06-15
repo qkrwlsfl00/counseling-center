@@ -43,7 +43,10 @@ const Header = () => {
           <div className="flex-shrink-0 flex items-center gap-3">
             <Link href="/" className="text-[1.42rem] font-bold text-dream-blue flex items-center gap-2.5 font-brand tracking-tight">
               <img src={logo.src || logo} alt="드림학습코칭상담센터 로고" className="w-10 h-10 object-contain" />
-              <span>드림학습코칭상담센터</span>
+              <div className="flex flex-col leading-tight text-center lg:text-left">
+                <span>드림학습코칭상담센터</span>
+                <span className="text-[1.1rem] opacity-90">드림심리상담연구소</span>
+              </div>
             </Link>
           </div>
 
