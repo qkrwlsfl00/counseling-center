@@ -33,8 +33,6 @@ const staffGroups = [
     category: "언어전문상담사",
     members: [
       { name: "옥민주", education: "언어치료전공", roles: "언어재활사 1급" },
-      { name: "이슬이", education: "언어치료전공", roles: "언어재활사" },
-      { name: "지미애", education: "언어치료전공", roles: "언어재활사" }
     ]
   },
   {
@@ -47,16 +45,13 @@ const staffGroups = [
   {
     category: "음악, 악기 선생님",
     members: [
-      { name: "유지수", education: "성악전공", roles: "음악상담" },
-      { name: "박규리", education: "바이올린 전공", roles: "" },
       { name: "박금찬", education: "타악기전공 (드럼, 난타)", roles: "" }
     ]
   },
   {
     category: "체육 바른자세운동 선생님",
     members: [
-      { name: "김은주", education: "체육석사", roles: "바른자세운동전문가" },
-      { name: "백수희", education: "체육석사", roles: "바른자세운동전문가" }
+      { name: "김은주", education: "체육석사", roles: "바른자세운동전문가" }
     ]
   }
 ];
