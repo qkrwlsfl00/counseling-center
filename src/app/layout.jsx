@@ -6,6 +6,8 @@ export const metadata = {
   description: '아이의 건강한 성장과 발달을 돕는 전문 상담센터입니다.',
 };
 
+import { Analytics } from '@vercel/analytics/react';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ko" data-scroll-behavior="smooth">
@@ -14,6 +16,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="flex flex-col min-h-screen">
         {children}
+        <Analytics />
       </body>
     </html>
   );
