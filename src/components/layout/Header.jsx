@@ -86,10 +86,18 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Booking Button */}
-          <div className="hidden lg:flex items-center">
+          {/* Action Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
+            <a
+              href="https://blog.naver.com/dsc14"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-full px-4 py-1.5 text-sm bg-[#03C75A] text-white hover:bg-[#02b351] focus:ring-[#03C75A]"
+            >
+              네이버 블로그
+            </a>
             <Link href="/booking">
-              <Button variant="primary" size="sm">상담 예약</Button>
+              <Button variant="primary" size="sm" className="!font-bold">상담 예약</Button>
             </Link>
           </div>
 
@@ -130,9 +138,20 @@ const Header = () => {
               오시는 길
             </a>
 
-            <Link href="/booking" onClick={handleMobileNavClick} className="block mt-6 pt-4 border-t border-gray-100">
-              <Button variant="primary" fullWidth className="py-3 font-bold">상담 예약</Button>
-            </Link>
+            <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col gap-3">
+              <a
+                href="https://blog.naver.com/dsc14"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleMobileNavClick}
+                className="inline-flex items-center justify-center font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-full w-full py-3 text-base bg-[#03C75A] text-white hover:bg-[#02b351] focus:ring-[#03C75A]"
+              >
+                네이버 블로그
+              </a>
+              <Link href="/booking" onClick={handleMobileNavClick} className="block w-full">
+                <Button variant="primary" fullWidth className="py-3 font-bold">상담 예약</Button>
+              </Link>
+            </div>
           </div>
         </div>
       )}
