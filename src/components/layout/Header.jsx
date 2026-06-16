@@ -149,7 +149,7 @@ const Header = () => {
                 네이버 블로그
               </a>
               <Link href="/booking" onClick={handleMobileNavClick} className="block w-full">
-                <Button variant="primary" fullWidth className="py-3 font-bold">상담 예약</Button>
+                <Button variant="primary" fullWidth className="py-3 !font-bold">상담 예약</Button>
               </Link>
             </div>
           </div>
