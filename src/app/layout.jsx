@@ -6,7 +6,7 @@ export const metadata = {
   description: '아이의 건강한 성장과 발달을 돕는 전문 상담센터입니다.',
 };
 
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({ children }) {
   return (
