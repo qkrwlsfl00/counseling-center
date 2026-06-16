@@ -85,8 +85,15 @@ const ImageLightbox = ({ items, activeIndex, onClose, onNext, onPrev }) => {
       </div>
 
       {/* Footer controls for desktop */}
-      <div className="w-full text-center text-gray-400 text-xs py-2 mb-2 select-none">
-        키보드 방향키(←, →)로 이동하고 ESC키로 닫을 수 있습니다.
+      <div className="w-full flex flex-col items-center justify-end pb-4 select-none">
+        {items[activeIndex].alt && (
+          <p className="text-white/90 text-sm md:text-base font-medium mb-3 px-4 text-center max-w-3xl drop-shadow-md">
+            {items[activeIndex].alt}
+          </p>
+        )}
+        <div className="text-center text-gray-400 text-xs">
+          키보드 방향키(←, →)로 이동하고 ESC키로 닫을 수 있습니다.
+        </div>
       </div>
     </div>
   );

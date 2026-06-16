@@ -70,12 +70,21 @@ const CenterGallery = ({ limit = null, linkHref = null }) => {
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              {/* Simple Zoom Overlay on Hover */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 text-white">
+              {/* Overlay on Hover */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 text-white transform scale-75 group-hover:scale-100 transition-transform duration-300">
                   <ZoomIn className="w-6 h-6" />
                 </div>
               </div>
+
+              {/* Photo Description overlay at the bottom */}
+              {photo.alt && (
+                <div className="absolute bottom-0 left-0 right-0 p-4 pt-12 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+                  <p className="text-white text-sm font-medium text-center line-clamp-2 drop-shadow-md">
+                    {photo.alt}
+                  </p>
+                </div>
+              )}
             </>
           );
 
