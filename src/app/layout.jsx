@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko" data-scroll-behavior="smooth">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
       <body className="flex flex-col min-h-screen">
         {children}
