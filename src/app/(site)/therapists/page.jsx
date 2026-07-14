@@ -1,8 +1,9 @@
 import React from 'react';
 
 export const metadata = {
-  title: '선생님 소개 | 드림학습코칭상담센터',
-  description: '드림학습코칭상담센터의 검증된 각 분야 전문가 선생님들을 소개합니다.',
+  title: '전문 상담사·선생님 소개',
+  description: '대구 드림학습코칭상담센터의 심리상담, 언어재활, 학습코칭, 미술·음악·체육 분야 전문 상담사와 선생님을 소개합니다.',
+  alternates: { canonical: '/therapists' },
 };
 
 const staffGroups = [

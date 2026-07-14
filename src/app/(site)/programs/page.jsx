@@ -3,8 +3,9 @@ import ProgramDetailCard from '../../../components/programs/ProgramDetailCard';
 import { allPrograms } from '../../../data/programsData';
 
 export const metadata = {
-  title: '프로그램 안내 | 드림학습코칭상담센터',
-  description: '드림학습코칭상담센터의 놀이/심리 치료, 언어, 인지학습, 성인상담 등 체계적인 전문 프로그램을 안내합니다.',
+  title: '상담·치료·학습코칭 프로그램',
+  description: '대구 아동·청소년 놀이치료, 심리상담, 언어치료, 음악치료, 학습코칭과 성인·부모상담 프로그램을 안내합니다.',
+  alternates: { canonical: '/programs' },
 };
 
 const Programs = () => {

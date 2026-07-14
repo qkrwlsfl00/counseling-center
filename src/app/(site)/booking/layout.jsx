@@ -1,6 +1,7 @@
 export const metadata = {
-  title: '상담 예약 | 드림학습코칭상담센터',
-  description: '전문가 상담을 예약하고 아이의 미래를 위한 첫 걸음을 내딛으세요.',
+  title: '상담 예약',
+  description: '대구 남구 아동·청소년 심리상담, 언어치료, 놀이치료, 학습코칭 상담을 간편하게 신청하세요.',
+  alternates: { canonical: '/booking' },
 };
 
 export default function BookingLayout({ children }) {

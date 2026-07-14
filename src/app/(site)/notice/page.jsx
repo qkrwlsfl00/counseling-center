@@ -6,8 +6,9 @@ import { noticesQuery } from '../../../sanity/queries';
 
 
 export const metadata = {
-  title: '센터 소식 | 드림학습코칭상담센터',
-  description: '드림학습코칭상담센터의 새로운 소식과 유용한 교육 정보를 전해드립니다.',
+  title: '공지사항',
+  description: '드림학습코칭상담센터의 운영 안내, 바우처 소식과 주요 공지사항을 확인하세요.',
+  alternates: { canonical: '/notice' },
 };
 
 export const revalidate = 60; // ISR: 60초마다 재검증
