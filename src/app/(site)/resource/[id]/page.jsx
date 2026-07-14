@@ -6,6 +6,7 @@ import { client } from '../../../../sanity/client';
 import { resourceBoardDetailQuery } from '../../../../sanity/queries';
 import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../../../sanity/image';
+import { sanitizeLegacyHtml } from '../../../../lib/sanitizeLegacyHtml';
 
 export const revalidate = 60;
 
@@ -17,9 +18,12 @@ const ptComponents = {
       }
       return (
         <div className="my-8 relative w-full h-auto overflow-hidden rounded-xl border border-gray-100">
-          <img
+          <Image
             src={urlForImage(value).url()}
             alt={value.alt || '첨부 이미지'}
+            width={1200}
+            height={800}
+            sizes="(max-width: 896px) 100vw, 896px"
             className="w-full h-auto object-contain max-h-[600px] bg-gray-50"
           />
         </div>
@@ -40,12 +44,14 @@ export async function generateMetadata({ params }) {
   if (!notice) {
     return {
       title: '게시글을 찾을 수 없습니다',
+      robots: { index: false, follow: false },
     };
   }
 
   return {
-    title: `${notice.title} | 드림학습코칭상담센터`,
+    title: notice.title,
     description: notice.title,
+    alternates: { canonical: `/resource/${id}` },
   };
 }
 
@@ -74,6 +80,10 @@ const ResourceDetail = async ({ params }) => {
     );
   }
 
+  const legacyContent = typeof notice.content === 'string'
+    ? sanitizeLegacyHtml(notice.content)
+    : null;
+
   return (
     <div className="w-full bg-[#fcfcfc] py-12 md:py-16 px-4 min-h-[70vh]">
       <div className="max-w-4xl mx-auto">
@@ -100,9 +110,9 @@ const ResourceDetail = async ({ params }) => {
           {/* Content */}
           <div className="p-6 md:p-8 min-h-[400px]">
             <div className="prose prose-blue max-w-none text-gray-700 leading-relaxed break-words">
-              {typeof notice.content === 'string' ? (
+              {legacyContent !== null ? (
                 // 레거시 HTML 데이터 (마이그레이션용)
-                <div dangerouslySetInnerHTML={{ __html: notice.content }} />
+                <div dangerouslySetInnerHTML={{ __html: legacyContent }} />
               ) : (
                 // Sanity Portable Text
                 <PortableText value={notice.content} components={ptComponents} />

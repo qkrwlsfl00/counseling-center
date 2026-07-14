@@ -28,20 +28,19 @@
    - 바우처 대상자 여부 체크박스 포함
 
 ## 3. 기술 스택 (Tech Stack)
-- **Framework:** React (Vite)
-- **Styling:** Tailwind CSS (둥근 모서리와 따뜻한 색상 위주 테마 설정)
-- **Icons:** Lucide-react (친근한 아이콘 세트)
+- **Framework:** Next.js App Router, React
+- **Styling:** Tailwind CSS
+- **CMS:** Sanity
+- **Email:** Resend
+- **Icons:** Lucide React
 
 ## 4. 디자인 시스템 가이드 (UI/UX)
 - **Colors:** Primary(꿈 - 따뜻한 스카이 블루/옐로우계열), Secondary(신뢰 - 차분한 민트/베이지)
 - **Fonts:** 고딕 계열이지만 너무 딱딱하지 않은 부드러운 폰트 사용.
 - **Components:** `rounded-lg` 또는 `rounded-full`을 기본으로 활용하여 친근감 강조.
 
-## 5. 작업 우선순위 (To-do)
-- [ ] 1. 프로젝트 초기 세팅 및 Tailwind Theme 설정
-- [ ] 2. 공통 UI 컴포넌트 (Header, Footer, Button) 구현
-- [ ] 3. Home 페이지 - 바우처 안내 배너 포함
-- [ ] 4. Programs 페이지 - 치료/코칭 분야별 카드 레이아웃
-- [ ] 5. Therapists 페이지 - 프로필 그리드
-- [ ] 6. About/Notice 페이지 (정적/게시판)
-- [ ] 7. Booking 페이지 - 유효성 검사가 포함된 폼 구현
+## 5. 주요 구성
+- Sanity 기반 공지사항, 센터 소식, 자료실, 센터 갤러리
+- 상담 예약 저장 및 관리자 이메일 알림
+- 카카오맵 기반 센터 위치 안내
+- `/studio` 경로의 Sanity Studio
