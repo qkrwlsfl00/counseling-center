@@ -4,13 +4,7 @@ export const noticesQuery = groq`
   *[_type == "notice"] | order(date desc) {
     _id,
     title,
-    date,
-    content,
-    attachments[] {
-      "url": asset->url,
-      "originalFilename": asset->originalFilename,
-      description
-    }
+    date
   }
 `;
 
@@ -21,6 +15,7 @@ export const noticeDetailQuery = groq`
     date,
     content,
     attachments[] {
+      _key,
       "url": asset->url,
       "originalFilename": asset->originalFilename,
       description
@@ -32,13 +27,7 @@ export const newsBoardsQuery = groq`
   *[_type == "newsBoard"] | order(date desc) {
     _id,
     title,
-    date,
-    content,
-    attachments[] {
-      "url": asset->url,
-      "originalFilename": asset->originalFilename,
-      description
-    }
+    date
   }
 `;
 
@@ -49,6 +38,7 @@ export const newsBoardDetailQuery = groq`
     date,
     content,
     attachments[] {
+      _key,
       "url": asset->url,
       "originalFilename": asset->originalFilename,
       description
@@ -60,13 +50,7 @@ export const resourceBoardsQuery = groq`
   *[_type == "resourceBoard"] | order(date desc) {
     _id,
     title,
-    date,
-    content,
-    attachments[] {
-      "url": asset->url,
-      "originalFilename": asset->originalFilename,
-      description
-    }
+    date
   }
 `;
 
@@ -77,6 +61,7 @@ export const resourceBoardDetailQuery = groq`
     date,
     content,
     attachments[] {
+      _key,
       "url": asset->url,
       "originalFilename": asset->originalFilename,
       description

@@ -1,44 +1,30 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
-
 const TrustBannerSection = () => {
   return (
-    <section className="py-20 px-4 bg-dream-beige/30 relative overflow-hidden border-y border-gray-50">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 bg-dream-blue/15 rounded-full blur-3xl opacity-60"></div>
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-dream-yellow/20 rounded-full blur-3xl opacity-60"></div>
-
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 tracking-tight">
-          <span className="text-dream-blue underline decoration-dream-blue decoration-4 underline-offset-8">편안한 마음으로 방문하세요</span>
-        </h2>
-        <p className="text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed font-semibold">
-          아이의 보폭에 맞춘 따뜻한 동행, 투명하고 정직한 전문 코칭을 약속드립니다.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left md:px-8">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-dream-blue" />
-              <h3 className="font-bold text-gray-800 text-lg">정직한 상담 체계</h3>
-            </div>
-            <p className="text-sm text-gray-600 leading-relaxed font-semibold">
-              꼼꼼한 초기 상담을 통해 아이의 상태에 꼭 필요한 코칭만을 제안하여 불필요한 장기 프로그램을 강요하지 않습니다.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-dream-blue" />
-              <h3 className="font-bold text-gray-800 text-lg">투명한 운영 방식</h3>
-            </div>
-            <p className="text-sm text-gray-700 leading-relaxed font-semibold">
-              정부 지원 바우처 사용 및 센터 비용에 대해 상세하게 안내해 드립니다. 아이들의 건강한 성장을 위한 정직한 운영을 약속합니다.
-            </p>
-          </div>
+    <section className="border-y border-[#ebe7dd] bg-[#f8f5ee] px-4 py-20 md:py-24">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:gap-20">
+        <div>
+          <h2 className="mb-5 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">
+            첫 상담에서<br className="hidden lg:block" /> 차근차근 안내드립니다
+          </h2>
+          <p className="max-w-md text-pretty text-base font-medium leading-7 text-slate-600">
+            처음부터 어떤 프로그램이 맞는지 정하고 오실 필요는 없습니다. 요즘 아이가 힘들어 보였던 순간부터 들려주세요.
+          </p>
         </div>
-        <div className="mt-12 flex items-center justify-center gap-1 text-gray-500">
-          <span className="text-sm">* 정부 지원 발달재활서비스 지정 전문가 코칭 기관</span>
+
+        <div className="divide-y divide-[#dcd6c9] border-y border-[#dcd6c9]">
+          <div className="grid gap-2 py-6 sm:grid-cols-[11rem_1fr] sm:gap-6">
+            <h3 className="text-base font-bold text-slate-800">현재 어려움 확인</h3>
+            <p className="text-sm font-medium leading-6 text-slate-600">가정과 학교에서 최근 어려워하는 상황과 보호자가 궁금한 점을 충분히 듣습니다.</p>
+          </div>
+          <div className="grid gap-2 py-6 sm:grid-cols-[11rem_1fr] sm:gap-6">
+            <h3 className="text-base font-bold text-slate-800">진행 방법 설명</h3>
+            <p className="text-sm font-medium leading-6 text-slate-600">검사나 수업이 필요한 이유, 진행 방식과 목표를 이해하기 쉽게 설명합니다.</p>
+          </div>
+          <div className="grid gap-2 py-6 sm:grid-cols-[11rem_1fr] sm:gap-6">
+            <h3 className="text-base font-bold text-slate-800">비용과 일정 안내</h3>
+            <p className="text-sm font-medium leading-6 text-slate-600">예상 일정과 비용, 이용 가능한 정부 지원 바우처를 함께 안내합니다.</p>
+          </div>
         </div>
       </div>
     </section>

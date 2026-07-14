@@ -4,6 +4,11 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { CheckCircle2, User, Phone, ClipboardList, Loader2 } from 'lucide-react';
 import Button from '../../../components/ui/Button';
+import {
+  BOOKING_LIMITS,
+  BOOKING_PROGRAMS,
+  validateBookingData,
+} from '../../../lib/booking';
 
 const Booking = () => {
   const router = useRouter();
@@ -17,30 +22,12 @@ const Booking = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const programs = [
-    "놀이/심리 치료",
-    "언어 치료",
-    "음악 치료",
-    "청소년/부모 상담",
-    "맞춤형 학습 코칭",
-    "종합 역량·심리 검사",
-    "기타"
-  ];
+  const [submitError, setSubmitError] = useState('');
 
   const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "이름을 입력해주세요.";
-    if (!formData.phone.trim()) {
-      newErrors.phone = "연락처를 입력해주세요.";
-    } else if (!/^[0-9-]{9,13}$/.test(formData.phone)) {
-      newErrors.phone = "올바른 연락처 형식이 아닙니다. (하이픈 포함 혹은 숫자만 기입)";
-    }
-    
-    if (!formData.program) newErrors.program = "희망하시는 코칭/상담 분야를 선택해주세요.";
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const validation = validateBookingData(formData);
+    setErrors(validation.errors);
+    return validation.isValid;
   };
 
   const handleChange = (e) => {
@@ -49,6 +36,7 @@ const Booking = () => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    setSubmitError('');
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -56,35 +44,38 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      setIsSubmitting(true);
-      try {
-        const response = await fetch('/api/booking', {
-          method: 'POST',
-          body: JSON.stringify({
-            name: formData.name,
-            phone: formData.phone,
-            program: formData.program,
-            isVoucher: formData.isVoucher,
-            memo: formData.memo
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
 
-        if (!response.ok) {
-          throw new Error('예약 접수 중 오류가 발생했습니다.');
+    if (!validate()) {
+      return;
+    }
+
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
         }
+      });
+      const result = await response.json().catch(() => null);
 
-        setIsSubmitted(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } catch (error) {
-        console.error("Booking submission error:", error);
-        alert("예약 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-      } finally {
-        setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error(result?.message || '예약 접수 중 오류가 발생했습니다.');
       }
+
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : '예약 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.'
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -121,7 +112,7 @@ const Booking = () => {
         </div>
 
         <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8 md:p-12">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             
             {/* Name */}
             <div>
@@ -134,10 +125,15 @@ const Booking = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                autoComplete="name"
+                maxLength={BOOKING_LIMITS.name}
+                required
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? 'name-error' : undefined}
                 placeholder="예) 홍길동"
                 className={`w-full px-5 py-3.5 rounded-xl border ${errors.name ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-dream-blue focus:ring-2 focus:ring-dream-blue/20'} outline-none transition-all placeholder-gray-400`}
               />
-              {errors.name && <p className="mt-2 text-sm text-red-500 font-medium">{errors.name}</p>}
+              {errors.name && <p id="name-error" className="mt-2 text-sm text-red-500 font-medium">{errors.name}</p>}
             </div>
 
             {/* Phone */}
@@ -151,10 +147,15 @@ const Booking = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                autoComplete="tel"
+                maxLength={BOOKING_LIMITS.phone}
+                required
+                aria-invalid={Boolean(errors.phone)}
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
                 placeholder="예) 010-1234-5678"
                 className={`w-full px-5 py-3.5 rounded-xl border ${errors.phone ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-dream-blue focus:ring-2 focus:ring-dream-blue/20'} outline-none transition-all placeholder-gray-400`}
               />
-              {errors.phone && <p className="mt-2 text-sm text-red-500 font-medium">{errors.phone}</p>}
+              {errors.phone && <p id="phone-error" className="mt-2 text-sm text-red-500 font-medium">{errors.phone}</p>}
             </div>
 
 
@@ -168,15 +169,18 @@ const Booking = () => {
                 name="program"
                 value={formData.program}
                 onChange={handleChange}
+                required
+                aria-invalid={Boolean(errors.program)}
+                aria-describedby={errors.program ? 'program-error' : undefined}
                 className={`w-full px-5 py-3.5 rounded-xl border appearance-none bg-white ${errors.program ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-dream-blue focus:ring-2 focus:ring-dream-blue/20'} outline-none transition-all text-gray-700 cursor-pointer`}
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundPosition: 'right 1.25rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
               >
                 <option value="">가장 관심 있는 분야를 하나 우선 선택해주세요</option>
-                {programs.map((prog, idx) => (
-                  <option key={idx} value={prog}>{prog}</option>
+                {BOOKING_PROGRAMS.map((program) => (
+                  <option key={program} value={program}>{program}</option>
                 ))}
               </select>
-              {errors.program && <p className="mt-2 text-sm text-red-500 font-medium">{errors.program}</p>}
+              {errors.program && <p id="program-error" className="mt-2 text-sm text-red-500 font-medium">{errors.program}</p>}
             </div>
 
             {/* Voucher Checkbox */}
@@ -204,13 +208,22 @@ const Booking = () => {
                 name="memo"
                 value={formData.memo}
                 onChange={handleChange}
+                maxLength={BOOKING_LIMITS.memo}
+                aria-invalid={Boolean(errors.memo)}
+                aria-describedby={errors.memo ? 'memo-error' : undefined}
                 placeholder="아이의 연령, 최근 특이사항이나 아동과 관련되어 현재 가장 고민이 되는 부분을 간단히 적어주시면 상담에 큰 도움이 됩니다."
                 rows={4}
                 className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:border-dream-blue focus:ring-2 focus:ring-dream-blue/20 outline-none transition-all resize-none placeholder-gray-400"
               />
+              {errors.memo && <p id="memo-error" className="mt-2 text-sm text-red-500 font-medium">{errors.memo}</p>}
             </div>
 
             <div className="pt-6">
+              {submitError && (
+                <p role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-sm font-medium text-red-600">
+                  {submitError}
+                </p>
+              )}
               <Button type="submit" variant="primary" size="lg" fullWidth className="py-4 text-lg" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">

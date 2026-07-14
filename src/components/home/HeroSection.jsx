@@ -1,32 +1,52 @@
-import React from 'react';
-import Link from 'next/link';
-import { getButtonClassName } from '../ui/Button';
+import React from "react";
+import Link from "next/link";
+import { getButtonClassName } from "../ui/Button";
+import HeroIllustration from "./HeroIllustration";
 
 const HeroSection = () => {
   return (
-    <section className="py-20 md:py-24 px-4 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-dream-blue/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '0s' }}></div>
-      <div className="absolute bottom-10 right-20 w-48 h-48 bg-dream-yellow/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+    <section className="overflow-hidden border-b border-[#efede8] bg-[#fcfcfc] px-4 py-16 md:py-24">
+      <div className="mx-auto grid max-w-6xl items-stretch gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14">
+        <div className="relative isolate flex flex-col justify-center py-4 text-left animate-fade-in-up md:py-8">
+          <HeroIllustration compact />
+          <h1 className="relative z-10 mb-7 max-w-3xl text-balance text-4xl font-extrabold leading-[1.14] tracking-[-0.035em] text-slate-900 md:text-[3.45rem] lg:text-[3.7rem]">
+            아이를 먼저 이해하고,
+            <br />
+            <span className="text-[#69b8dc]">필요한 도움을 함께 찾습니다</span>
+          </h1>
+          <p className="mb-9 max-w-xl text-pretty text-base font-medium leading-8 text-slate-600 md:text-lg">
+            언어, 놀이·심리, 인지학습, 심리운동 상담을 진행합니다.
+            <br className="hidden md:block" />첫 상담에서 아이의 현재 어려움과
+            필요한 과정을 차분히 안내드립니다.
+          </p>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <Link
+              href="/booking"
+              className={getButtonClassName({
+                variant: "primary",
+                size: "lg",
+                className:
+                  "!rounded-xl px-8 text-base font-semibold shadow-[0_10px_24px_rgba(105,184,220,0.24)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(105,184,220,0.3)] active:translate-y-0 transition-all",
+              })}
+            >
+              첫 상담 예약하기
+            </Link>
+            <Link
+              href="/programs"
+              className="inline-flex items-center justify-center gap-2 px-4 py-3 text-base font-semibold text-slate-700 transition-colors hover:text-[#4d9fc4] focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-2 sm:px-3"
+            >
+              프로그램 살펴보기 <span aria-hidden="true">→</span>
+            </Link>
+          </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-up">
-        <div className="flex items-center justify-center gap-1 mb-5 text-gray-600">
-          <span className="text-sm font-bold">* 정부 지원 발달재활서비스 지정 전문가 코칭 기관</span>
+          <div className="mt-11 flex flex-wrap justify-center sm:justify-normal gap-x-6 gap-y-2 border-t border-slate-200 pt-5 text-sm font-medium text-slate-500">
+            <span>아동·청소년 상담</span>
+            <span>1:1 및 집단 프로그램</span>
+            <span>바우처 이용 기관</span>
+          </div>
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-          아이의 보폭에 맞춘<br /><span className="text-dream-blue">따뜻한 동행</span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed font-semibold">
-          단순한 문제 해결을 넘어, 아이가 지닌 고유한 잠재력을 발견하고 <br className="hidden md:block" />가족 모두가 편안해지는 길을 제안합니다.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link href="/booking" className={getButtonClassName({ variant: 'primary', size: 'lg', className: 'shadow-lg hover:shadow-xl transition-all rounded-full px-8 text-lg' })}>
-            상담 안내받기
-          </Link>
-          <Link href="/programs" className={getButtonClassName({ variant: 'outline', size: 'lg', className: 'border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:shadow-md transition-all rounded-full px-8 text-lg font-bold' })}>
-            운영 프로그램 보기
-          </Link>
-        </div>
+
+        <HeroIllustration />
       </div>
     </section>
   );

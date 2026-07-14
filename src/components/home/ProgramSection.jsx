@@ -1,61 +1,75 @@
 import React from 'react';
 import Link from 'next/link';
-import { getButtonClassName } from '../ui/Button';
 import ProgramCard from '../common/ProgramCard';
-import { Heart, Brain, Music, Smile, BookOpen, Users } from 'lucide-react';
+import { Heart, Brain, Music, Smile, BookOpen, Users, Target, ShieldCheck } from 'lucide-react';
 
 const PROGRAMS = [
   {
     icon: Smile,
-    title: "놀이/심리 치료",
-    desc: "놀이를 매개로 아이가 자신의 감정을 표출하며 마음의 안정을 찾도록 돕습니다.",
+    title: "놀이·심리치료",
+    desc: "말로 설명하기 어려운 감정과 행동을 놀이 안에서 살펴봅니다.",
     color: "bg-[#Fdfcf0]"
   },
   {
     icon: Brain,
-    title: "언어 치료",
-    desc: "전문적인 진단을 바탕으로 발달 수준에 맞춘 체계적인 언어 자극을 제공합니다.",
+    title: "언어치료",
+    desc: "언어 이해와 표현, 발음, 상황에 맞는 대화를 평가하고 연습합니다.",
     color: "bg-[#F4FAFD]"
   },
   {
     icon: Music,
-    title: "미술 치료",
-    desc: "창작 활동을 통해 내면의 감정을 표출하고, 예술적 치유 경험을 제공합니다.",
+    title: "미술치료",
+    desc: "그림과 만들기를 통해 감정을 표현하고 긴장을 다루는 경험을 돕습니다.",
     color: "bg-[#F8F5F9]"
   },
   {
     icon: Heart,
     title: "심리운동",
-    desc: "신체 활동을 통해 자신의 몸을 탐색하고 건강한 자아상을 확립합니다.",
+    desc: "몸을 움직이며 신체 조절, 자신감, 또래 관계를 연습합니다.",
     color: "bg-[#FEF8F4]"
   },
   {
     icon: BookOpen,
     title: "인지학습치료",
-    desc: "주의집중력, 사고력 등 학습 기초 역량을 체계적으로 훈련합니다.",
+    desc: "주의집중, 기억, 문제 해결 등 학습의 기초를 점검하고 훈련합니다.",
     color: "bg-[#FEFCE8]"
   },
   {
     icon: Users,
-    title: "사회성집단",
-    desc: "또래 집단 활동을 통해 사회적 규칙을 익히고 소통 능력을 기릅니다.",
+    title: "사회성 집단",
+    desc: "또래와 함께 대화, 차례 지키기, 갈등 조절을 연습합니다.",
     color: "bg-[#F2FCF1]"
+  },
+  {
+    icon: Target,
+    title: "경계선 치료",
+    desc: "학습 속도와 인지 특성을 살펴보고, 아이의 수준에 맞춰 기초 학습을 돕습니다.",
+    color: "bg-[#FFF4F2]"
+  },
+  {
+    icon: ShieldCheck,
+    title: "성인상담",
+    desc: "스트레스, 관계, 직무 갈등, 우울·불안 등 일상의 어려움을 함께 살펴봅니다.",
+    color: "bg-[#F8F3FA]"
   }
 ];
 
 const ProgramSection = () => {
   return (
-    <section className="py-24 px-4 bg-white border-y border-gray-50">
+    <section className="border-b border-slate-100 bg-white px-4 py-20 md:py-24">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">진행 중인 코칭 프로그램</h2>
-          <p className="text-gray-600 font-bold">신뢰할 수 있는 전문가가 1:1 맞춤형 솔루션을 제안합니다.</p>
+        <div className="mb-12 max-w-2xl text-left md:mb-14">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">필요한 상담과 프로그램을 살펴보세요</h2>
+          <p className="text-pretty text-base font-medium leading-7 text-slate-600 md:text-lg">
+            어떤 상담이나 프로그램이 맞는지 미리 정하지 않아도 괜찮습니다. 첫 상담 후 현재 어려움과 목표에 맞춰 안내합니다.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-flow-dense grid-cols-1 border-y border-slate-200 md:grid-cols-2">
           {PROGRAMS.map((program, index) => (
             <ProgramCard
               key={index}
+              className={`${index < PROGRAMS.length - 1 ? 'border-b border-slate-200' : ''} ${index % 2 === 0 ? 'md:border-r md:border-slate-200' : ''} ${index >= PROGRAMS.length - 2 ? 'md:border-b-0' : ''}`}
               icon={program.icon}
               title={program.title}
               desc={program.desc}
@@ -65,12 +79,12 @@ const ProgramSection = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-10 text-left">
           <Link
             href="/programs"
-            className={getButtonClassName({ variant: 'outline', size: 'lg', className: 'group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto' })}
+            className="group inline-flex items-center gap-2 border-b border-slate-400 pb-1 text-base font-semibold text-slate-700 transition-colors hover:border-[#4d9fc4] hover:text-[#4d9fc4] focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-4"
           >
-            전체 프로그램 보러가기
+            전체 프로그램 안내
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>

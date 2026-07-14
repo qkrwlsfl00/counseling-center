@@ -1,25 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
-import { getButtonClassName } from '../ui/Button';
 import CenterGallery from '../common/CenterGallery';
 
 const CenterTourSection = () => {
   return (
-    <section className="py-24 px-4 bg-white border-b border-gray-50">
+    <section className="border-b border-slate-100 bg-white px-4 py-20 md:py-24">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">센터 둘러보기</h2>
-          <p className="text-gray-600 font-bold">아이들과 부모님이 안심하고 편안하게 머무를 수 있는 드림학습코칭상담센터 공간입니다.</p>
+        <div className="mb-12 max-w-2xl text-left">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">센터 둘러보기</h2>
+          <p className="text-base font-medium leading-7 text-slate-600 md:text-lg">방문 전에 상담실과 활동 공간을 사진으로 미리 만나보세요.</p>
         </div>
 
         <CenterGallery limit={4} linkHref="/about#gallery" />
 
-        <div className="mt-16 text-center">
+        <div className="mt-10 text-left">
           <Link
             href="/about#gallery"
-            className={getButtonClassName({ variant: 'outline', size: 'lg', className: 'group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto' })}
+            className="group inline-flex items-center gap-2 border-b border-slate-400 pb-1 text-base font-semibold text-slate-700 transition-colors hover:border-[#4d9fc4] hover:text-[#4d9fc4] focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-4"
           >
-            센터 사진 더보기
+            센터 공간 더보기
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
