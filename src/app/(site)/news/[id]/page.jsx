@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
   let notice = null;
   try {
     notice = await client.fetch(newsBoardDetailQuery, { id });
-  } catch (e) { 
+  } catch (e) {
     console.error("Sanity fetch error in metadata:", e.message);
   }
   
