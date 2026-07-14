@@ -9,7 +9,7 @@ const ProgramDetailCard = ({ icon: Icon, title, catchphrase, desc, features, col
         </div>
         <div>
           <h3 className="text-xl font-bold text-gray-900 mb-1">{title}</h3>
-          <span className="text-sm text-dream-blue font-bold">"{catchphrase}"</span>
+          <span className="text-sm text-dream-blue font-bold">“{catchphrase}”</span>
         </div>
       </div>
       <p className="text-gray-600 mb-6 flex-grow leading-relaxed">{desc}</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { MapPin, Phone, Clock } from 'lucide-react';
 import logo from '../../assets/logo.png';
 
@@ -13,7 +14,7 @@ const Footer = () => {
             <h3 
               className="text-lg font-bold text-dream-blue mb-4 flex items-center gap-2 select-none font-brand tracking-tight"
             >
-              <img src={logo.src || logo} alt="드림학습코칭상담센터 로고" className="w-8 h-8 object-contain" />
+              <Image src={logo} alt="드림학습코칭상담센터 로고" className="w-8 h-8 object-contain" />
               <div className="flex flex-col leading-tight">
                 <span>드림학습코칭상담센터</span>
                 <span className="text-[0.9rem] opacity-90">드림심리상담연구소</span>

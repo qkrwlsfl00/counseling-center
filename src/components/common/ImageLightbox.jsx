@@ -1,8 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ImageLightbox = ({ items, activeIndex, onClose, onNext, onPrev }) => {
+  const closeButtonRef = useRef(null);
+  const isOpen = activeIndex !== null;
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const previouslyFocused = document.activeElement;
+    closeButtonRef.current?.focus();
+
+    return () => {
+      previouslyFocused?.focus?.();
+    };
+  }, [isOpen]);
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -34,6 +48,9 @@ const ImageLightbox = ({ items, activeIndex, onClose, onNext, onPrev }) => {
     <div 
       onClick={onClose}
       className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex flex-col items-center justify-between p-4 transition-all duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-label="센터 사진 크게 보기"
     >
       {/* Header */}
       <div className="w-full flex justify-between items-center text-white px-4 py-2 relative z-10 max-w-7xl">
@@ -43,7 +60,12 @@ const ImageLightbox = ({ items, activeIndex, onClose, onNext, onPrev }) => {
             {activeIndex + 1} / {items.length}
           </span>
           <button 
-            onClick={onClose}
+            ref={closeButtonRef}
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onClose();
+            }}
             className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center border border-white/10 transition-colors cursor-pointer"
             aria-label="닫기"
           >
@@ -56,6 +78,7 @@ const ImageLightbox = ({ items, activeIndex, onClose, onNext, onPrev }) => {
       <div className="relative w-full flex-1 flex items-center justify-center max-w-6xl py-4">
         {/* Navigation buttons inside overlay */}
         <button 
+          type="button"
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
           className="absolute left-2 md:left-4 z-20 w-12 h-12 rounded-full bg-black/50 hover:bg-black/80 flex items-center justify-center border border-white/10 text-white transition-all cursor-pointer select-none"
           aria-label="이전 사진"
@@ -76,6 +99,7 @@ const ImageLightbox = ({ items, activeIndex, onClose, onNext, onPrev }) => {
         </div>
 
         <button 
+          type="button"
           onClick={(e) => { e.stopPropagation(); onNext(); }}
           className="absolute right-2 md:right-4 z-20 w-12 h-12 rounded-full bg-black/50 hover:bg-black/80 flex items-center justify-center border border-white/10 text-white transition-all cursor-pointer select-none"
           aria-label="다음 사진"

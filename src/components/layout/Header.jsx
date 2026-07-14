@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
-import Button from '../ui/Button';
+import { getButtonClassName } from '../ui/Button';
 import DropdownMenu from './DropdownMenu';
 import logo from '../../assets/logo.png';
 
@@ -55,7 +56,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-3">
             <Link href="/" className="text-[1.42rem] font-bold text-dream-blue flex items-center gap-2.5 font-brand tracking-tight">
-              <img src={logo.src || logo} alt="드림학습코칭상담센터 로고" className="w-10 h-10 object-contain" />
+              <Image src={logo} alt="드림학습코칭상담센터 로고" className="w-10 h-10 object-contain" priority />
               <div className="flex flex-col leading-tight text-left">
                 <span>드림학습코칭상담센터</span>
                 <span className="text-[1.1rem] opacity-90">드림심리상담연구소</span>
@@ -67,23 +68,23 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-7 font-brand text-[1.2rem] tracking-tight">
             <Link href="/" className="text-gray-700 hover:text-dream-blue font-bold transition-colors">홈</Link>
 
-            {NAV_LINKS.map((nav, index) => (
-              <DropdownMenu key={index} title={nav.title} href={nav.href}>
-                {nav.subLinks.map((sub, idx) => (
-                  <Link key={idx} href={sub.href} className="block px-4 py-2 text-base text-gray-700 hover:bg-dream-blue/5 hover:text-dream-blue font-bold transition-colors">
+            {NAV_LINKS.map((nav) => (
+              <DropdownMenu key={nav.href} title={nav.title} href={nav.href}>
+                {nav.subLinks.map((sub) => (
+                  <Link key={sub.href} href={sub.href} className="block px-4 py-2 text-base text-gray-700 hover:bg-dream-blue/5 hover:text-dream-blue focus:bg-dream-blue/5 focus:text-dream-blue font-bold transition-colors outline-none">
                     {sub.title}
                   </Link>
                 ))}
               </DropdownMenu>
             ))}
 
-            <a
+            <Link
               href="/#location"
               onClick={(e) => handleLocationClick(e, false)}
               className="text-gray-700 hover:text-dream-blue font-bold transition-colors py-2"
             >
               오시는 길
-            </a>
+            </Link>
           </nav>
 
           {/* Action Buttons */}
@@ -96,16 +97,23 @@ const Header = () => {
             >
               네이버 블로그
             </a>
-            <Link href="/booking">
-              <Button variant="primary" size="sm" className="!font-bold">상담 예약</Button>
+            <Link
+              href="/booking"
+              className={getButtonClassName({ size: 'sm', className: '!font-bold' })}
+            >
+              상담 예약
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center lg:hidden">
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-600 hover:text-gray-900 focus:outline-none p-2"
+              aria-label={isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -115,28 +123,28 @@ const Header = () => {
 
       {/* Mobile Menu Content */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg animate-in slide-in-from-top-2 font-brand tracking-tight max-h-[80vh] overflow-y-auto">
+        <div id="mobile-navigation" className="lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg animate-in slide-in-from-top-2 font-brand tracking-tight max-h-[80vh] overflow-y-auto">
           <div className="px-4 pt-2 pb-6 space-y-1">
             <Link href="/" onClick={handleMobileNavClick} className="block px-3 py-3 rounded-md text-lg font-bold text-gray-800 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors">홈</Link>
 
-            {NAV_LINKS.map((nav, index) => (
-              <div key={index} className="pt-4 pb-2 border-t border-gray-50">
+            {NAV_LINKS.map((nav) => (
+              <div key={nav.href} className="pt-4 pb-2 border-t border-gray-50">
                 <Link href={nav.href} onClick={handleMobileNavClick} className="block px-3 text-sm font-bold text-dream-blue/70 mb-2 mt-2">{nav.title}</Link>
-                {nav.subLinks.map((sub, idx) => (
-                  <Link key={idx} href={sub.href} onClick={handleMobileNavClick} className="block px-3 py-2.5 pl-6 rounded-md text-base font-bold text-gray-700 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors">
+                {nav.subLinks.map((sub) => (
+                  <Link key={sub.href} href={sub.href} onClick={handleMobileNavClick} className="block px-3 py-2.5 pl-6 rounded-md text-base font-bold text-gray-700 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors">
                     {sub.title}
                   </Link>
                 ))}
               </div>
             ))}
 
-            <a
+            <Link
               href="/#location"
               onClick={(e) => handleLocationClick(e, true)}
               className="block px-3 py-3 rounded-md text-lg font-bold text-gray-800 hover:text-dream-blue hover:bg-dream-blue/5 transition-colors mt-2 border-t border-gray-50"
             >
               오시는 길
-            </a>
+            </Link>
 
             <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col gap-3">
               <a
@@ -148,8 +156,12 @@ const Header = () => {
               >
                 네이버 블로그
               </a>
-              <Link href="/booking" onClick={handleMobileNavClick} className="block w-full">
-                <Button variant="primary" fullWidth className="py-3 !font-bold">상담 예약</Button>
+              <Link
+                href="/booking"
+                onClick={handleMobileNavClick}
+                className={getButtonClassName({ fullWidth: true, className: 'py-3 !font-bold' })}
+              >
+                상담 예약
               </Link>
             </div>
           </div>

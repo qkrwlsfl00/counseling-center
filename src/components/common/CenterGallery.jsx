@@ -99,13 +99,15 @@ const CenterGallery = ({ limit = null, linkHref = null }) => {
           }
 
           return (
-            <div 
+            <button
+              type="button"
               key={index} 
               onClick={() => openLightbox(index)}
-              className={cardClassName}
+              className={`${cardClassName} w-full text-left focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-2`}
+              aria-label={`${photo.alt || '센터 사진'} 크게 보기`}
             >
               {cardContent}
-            </div>
+            </button>
           );
         })}
       </div>

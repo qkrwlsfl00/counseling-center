@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ClipboardList, MessageCircle, BrainCircuit, Activity, ChevronRight } from 'lucide-react';
 
 const assessmentsData = [
@@ -155,16 +155,9 @@ const assessmentsData = [
 
 export default function AssessmentsClient() {
   const [activeTab, setActiveTab] = useState(assessmentsData[0].id);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const activeData = assessmentsData.find(d => d.id === activeTab);
   const Icon = activeData.icon;
-
-  if (!isMounted) return null; // Avoid hydration mismatch
 
   return (
     <div className="w-full bg-[#fcfcfc] py-12 md:py-20 px-4 min-h-[85vh]">
