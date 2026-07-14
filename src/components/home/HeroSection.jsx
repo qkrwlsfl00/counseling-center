@@ -1,12 +1,8 @@
-'use client';
-
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import Button from '../ui/Button';
+import Link from 'next/link';
+import { getButtonClassName } from '../ui/Button';
 
 const HeroSection = () => {
-  const router = useRouter();
-
   return (
     <section className="py-20 md:py-24 px-4 relative overflow-hidden">
       {/* Background Elements */}
@@ -24,12 +20,12 @@ const HeroSection = () => {
           단순한 문제 해결을 넘어, 아이가 지닌 고유한 잠재력을 발견하고 <br className="hidden md:block" />가족 모두가 편안해지는 길을 제안합니다.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Button variant="primary" size="lg" onClick={() => router.push('/booking')} className="shadow-lg hover:shadow-xl transition-all rounded-full px-8 text-lg">
+          <Link href="/booking" className={getButtonClassName({ variant: 'primary', size: 'lg', className: 'shadow-lg hover:shadow-xl transition-all rounded-full px-8 text-lg' })}>
             상담 안내받기
-          </Button>
-          <Button variant="outline" size="lg" onClick={() => router.push('/programs')} className="border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:shadow-md transition-all rounded-full px-8 text-lg font-bold">
+          </Link>
+          <Link href="/programs" className={getButtonClassName({ variant: 'outline', size: 'lg', className: 'border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:shadow-md transition-all rounded-full px-8 text-lg font-bold' })}>
             운영 프로그램 보기
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

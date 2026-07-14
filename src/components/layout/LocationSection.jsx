@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Map, MapMarker, useKakaoLoader } from 'react-kakao-maps-sdk';
+import React, { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { MapPin, Phone } from 'lucide-react';
 
 const kakaoMapAppKey = process.env.NEXT_PUBLIC_KAKAO_MAP_APP_KEY;
@@ -27,36 +27,38 @@ const branches = [
   }
 ];
 
-const KakaoMapPanel = ({ branch }) => {
-  const [loading, error] = useKakaoLoader({
-    appkey: kakaoMapAppKey,
-    libraries: ['services'],
-  });
-
-  if (loading || error) {
-    return (
-      <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 px-6 text-center">
-        {error ? '지도를 불러오는 중 오류가 발생했습니다.' : '지도 API를 불러오는 중입니다...'}
-      </div>
-    );
-  }
-
-  return (
-    <Map
-      center={{ lat: branch.lat, lng: branch.lng }}
-      style={{ width: '100%', height: '100%' }}
-      level={3}
-    >
-      <MapMarker position={{ lat: branch.lat, lng: branch.lng }}>
-        <div className="px-3 py-1 text-sm font-bold text-gray-700">{branch.name}</div>
-      </MapMarker>
-    </Map>
-  );
-};
+const KakaoMapPanel = dynamic(() => import('./KakaoMapPanel'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 px-6 text-center">
+      지도를 불러오는 중입니다...
+    </div>
+  ),
+});
 
 const LocationSection = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const mapContainerRef = useRef(null);
   const branch = branches[activeTab];
+
+  useEffect(() => {
+    const mapContainer = mapContainerRef.current;
+    if (!mapContainer || shouldLoadMap) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px 0px' },
+    );
+
+    observer.observe(mapContainer);
+    return () => observer.disconnect();
+  }, [shouldLoadMap]);
 
   return (
     <section id="location" className="w-full bg-[#fdfdfc] py-24 px-4 border-t border-gray-100">
@@ -124,9 +126,13 @@ const LocationSection = () => {
           </div>
 
           {/* Map Side */}
-          <div className="md:col-span-8 h-[400px] md:h-[500px] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 relative">
-            {kakaoMapAppKey ? (
+          <div ref={mapContainerRef} className="md:col-span-8 h-[400px] md:h-[500px] rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 relative">
+            {kakaoMapAppKey && shouldLoadMap ? (
               <KakaoMapPanel branch={branch} />
+            ) : kakaoMapAppKey ? (
+              <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 px-6 text-center">
+                지도를 준비 중입니다...
+              </div>
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 px-6 text-center">
                 지도 설정이 필요합니다. NEXT_PUBLIC_KAKAO_MAP_APP_KEY를 확인해주세요.

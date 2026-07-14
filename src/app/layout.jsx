@@ -62,6 +62,8 @@ export default function RootLayout({ children }) {
     <html lang="ko" data-scroll-behavior="smooth">
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="flex flex-col min-h-screen">

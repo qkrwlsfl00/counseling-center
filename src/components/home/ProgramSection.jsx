@@ -1,8 +1,6 @@
-'use client';
-
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import Button from '../ui/Button';
+import Link from 'next/link';
+import { getButtonClassName } from '../ui/Button';
 import ProgramCard from '../common/ProgramCard';
 import { Heart, Brain, Music, Smile, BookOpen, Users } from 'lucide-react';
 
@@ -46,8 +44,6 @@ const PROGRAMS = [
 ];
 
 const ProgramSection = () => {
-  const router = useRouter();
-
   return (
     <section className="py-24 px-4 bg-white border-y border-gray-50">
       <div className="max-w-6xl mx-auto">
@@ -64,21 +60,19 @@ const ProgramSection = () => {
               title={program.title}
               desc={program.desc}
               color={program.color}
-              onClick={() => router.push('/programs')}
+              href="/programs"
             />
           ))}
         </div>
 
         <div className="mt-16 text-center">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => router.push('/programs')}
-            className="group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto"
+          <Link
+            href="/programs"
+            className={getButtonClassName({ variant: 'outline', size: 'lg', className: 'group border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:-translate-y-1 hover:shadow-md transition-all rounded-full px-10 text-lg font-bold flex items-center gap-2 mx-auto' })}
           >
             전체 프로그램 보러가기
             <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -13,11 +13,11 @@ const staticRoutes = [
   '/resource',
 ];
 
+export const revalidate = 3600;
+
 export default async function sitemap() {
-  const now = new Date();
   const entries = staticRoutes.map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: now,
     changeFrequency: path === '' ? 'weekly' : 'monthly',
     priority: path === '' ? 1 : path === '/booking' ? 0.9 : 0.8,
   }));
@@ -37,7 +37,7 @@ export default async function sitemap() {
     };
 
     entries.push(
-      ...documents.map((document) => ({
+      ...documents.filter((document) => document._updatedAt).map((document) => ({
         url: `${SITE_URL}/${routeByType[document._type]}/${document._id}`,
         lastModified: new Date(document._updatedAt),
         changeFrequency: 'monthly',
