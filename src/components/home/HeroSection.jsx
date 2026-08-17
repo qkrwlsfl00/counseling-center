@@ -12,7 +12,7 @@ const HeroSection = () => {
           <h1 className="relative z-10 mb-7 max-w-3xl text-balance text-4xl font-extrabold leading-[1.14] tracking-[-0.035em] text-slate-900 md:text-[3.45rem] lg:text-[3.7rem]">
             아이를 먼저 이해하고,
             <br />
-            <span className="text-[#69b8dc]">필요한 도움을 함께 찾습니다</span>
+            <span className="text-dream-blue">필요한 도움을 함께 찾습니다</span>
           </h1>
           <p className="mb-9 max-w-xl text-pretty text-base font-medium leading-8 text-slate-600 md:text-lg">
             언어, 놀이·심리, 인지학습, 심리운동 상담을 진행합니다.
@@ -26,14 +26,14 @@ const HeroSection = () => {
                 variant: "primary",
                 size: "lg",
                 className:
-                  "!rounded-xl px-8 text-base font-semibold shadow-[0_10px_24px_rgba(105,184,220,0.24)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(105,184,220,0.3)] active:translate-y-0 transition-all",
+                  "!rounded-xl px-8 text-base font-semibold hover:-translate-y-0.5 active:translate-y-0 transition-all",
               })}
             >
               첫 상담 예약하기
             </Link>
             <Link
               href="/programs"
-              className="inline-flex items-center justify-center gap-2 px-4 py-3 text-base font-semibold text-slate-700 transition-colors hover:text-[#4d9fc4] focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-2 sm:px-3"
+              className="inline-flex items-center justify-center gap-2 px-4 py-3 text-base font-semibold text-slate-700 transition-colors hover:text-dream-blue focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-2 sm:px-3"
             >
               프로그램 살펴보기 <span aria-hidden="true">→</span>
             </Link>

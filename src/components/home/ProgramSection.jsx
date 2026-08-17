@@ -14,7 +14,7 @@ const PROGRAMS = [
     icon: Brain,
     title: "언어치료",
     desc: "언어 이해와 표현, 발음, 상황에 맞는 대화를 평가하고 연습합니다.",
-    color: "bg-[#F4FAFD]"
+    color: "bg-dream-blue/10"
   },
   {
     icon: Music,
@@ -82,7 +82,7 @@ const ProgramSection = () => {
         <div className="mt-10 text-left">
           <Link
             href="/programs"
-            className="group inline-flex items-center gap-2 border-b border-slate-400 pb-1 text-base font-semibold text-slate-700 transition-colors hover:border-[#4d9fc4] hover:text-[#4d9fc4] focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-4"
+            className="group inline-flex items-center gap-2 border-b border-slate-400 pb-1 text-base font-semibold text-slate-700 transition-colors hover:border-dream-blue hover:text-dream-blue focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-4"
           >
             전체 프로그램 안내
             <span className="group-hover:translate-x-1 transition-transform">→</span>

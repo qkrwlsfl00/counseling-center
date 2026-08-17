@@ -53,11 +53,11 @@ const assessmentsData = [
     id: "language",
     title: "언어 검사",
     icon: MessageCircle,
-    color: "bg-[#A2D2FF]",
-    activeColor: "bg-[#A2D2FF] text-white",
+    color: "bg-dream-blue",
+    activeColor: "bg-dream-blue text-white",
     inactiveColor: "bg-white text-gray-500 hover:bg-gray-50",
-    gradient: "from-[#A2D2FF]/10 via-transparent to-transparent",
-    dotColor: "bg-[#A2D2FF]",
+    gradient: "from-dream-blue/10 via-transparent to-transparent",
+    dotColor: "bg-dream-blue",
     items: [
       {
         title: "전반적 언어발달 평가",
@@ -218,9 +218,9 @@ export default function AssessmentsClient() {
                 </h2>
               </div>
 
-              <div className="space-y-8 relative z-10">
+              <div className="divide-y divide-gray-100 relative z-10">
                 {activeData.items.map((item, idx) => (
-                  <div key={idx} className="group">
+                  <div key={idx} className="group py-7 first:pt-0 last:pb-0">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-3">
                       <span className={`w-2.5 h-2.5 rounded-full ${activeData.dotColor} transition-transform duration-300 group-hover:scale-150`}></span>
                       {item.title}
@@ -233,12 +233,9 @@ export default function AssessmentsClient() {
                     )}
 
                     {item.list && item.list.length > 0 && (
-                      <ul className="space-y-3 bg-gray-50/80 hover:bg-gray-50 p-5 rounded-2xl border border-gray-100/80 transition-colors duration-300 ml-5">
+                      <ul className="list-disc space-y-3 ml-5 pl-5 text-gray-700 text-[0.95rem]">
                         {item.list.map((listItem, listIdx) => (
-                          <li key={listIdx} className="flex items-start gap-3 text-gray-700 text-[0.95rem]">
-                            <span className="text-gray-400 font-extrabold mt-0.5 text-lg leading-none">•</span>
-                            <span className="leading-relaxed font-medium">{listItem}</span>
-                          </li>
+                          <li key={listIdx} className="pl-1 leading-relaxed font-medium">{listItem}</li>
                         ))}
                       </ul>
                     )}

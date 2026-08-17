@@ -8,7 +8,7 @@ export const allPrograms = [
     features: ["정서 조절 및 불안감 해소", "주의집중력 강화 및 공격성 완화", "건강한 사회성 및 또래 관계 형성"]
   },
   {
-    icon: Brain, title: "언어 치료", color: "bg-[#A2D2FF]",
+    icon: Brain, title: "언어 치료", color: "bg-dream-blue/30",
     catchphrase: "생각을 말로, 세상을 넓히는 언어 발달",
     desc: "전문적인 진단을 바탕으로 아이의 언어 발달 수준에 맞춘 체계적인 자극과 교정을 제공합니다.",
     features: ["수용 및 표현 언어 발달 촉진", "정확한 발음 교정 (조음 및 음운)", "상황에 맞는 대화법(화용 언어) 향상"]

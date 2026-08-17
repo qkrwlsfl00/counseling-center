@@ -16,7 +16,7 @@ const CenterTourSection = () => {
         <div className="mt-10 text-left">
           <Link
             href="/about#gallery"
-            className="group inline-flex items-center gap-2 border-b border-slate-400 pb-1 text-base font-semibold text-slate-700 transition-colors hover:border-[#4d9fc4] hover:text-[#4d9fc4] focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-4"
+            className="group inline-flex items-center gap-2 border-b border-slate-400 pb-1 text-base font-semibold text-slate-700 transition-colors hover:border-dream-blue hover:text-dream-blue focus:outline-none focus:ring-2 focus:ring-dream-blue focus:ring-offset-4"
           >
             센터 공간 더보기
             <span className="group-hover:translate-x-1 transition-transform">→</span>

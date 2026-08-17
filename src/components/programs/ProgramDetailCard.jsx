@@ -13,13 +13,11 @@ const ProgramDetailCard = ({ icon: Icon, title, catchphrase, desc, features, col
         </div>
       </div>
       <p className="text-gray-600 mb-6 flex-grow leading-relaxed">{desc}</p>
-      <div className="bg-gray-50/50 p-4 rounded-xl border border-gray-100">
+      <div className="border-t border-gray-100 pt-5">
         <h4 className="font-semibold text-gray-800 mb-3 text-sm flex items-center gap-1.5">기대 효과</h4>
-        <ul className="space-y-2 text-sm text-gray-600">
+        <ul className="list-disc space-y-2 pl-5 text-sm text-gray-600">
           {features.map((feature, idx) => (
-            <li key={idx} className="flex items-start gap-2">
-              <span className="leading-relaxed">{feature}</span>
-            </li>
+            <li key={idx} className="pl-1 leading-relaxed">{feature}</li>
           ))}
         </ul>
       </div>

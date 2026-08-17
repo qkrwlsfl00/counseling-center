@@ -42,7 +42,7 @@ const About = () => {
       {/* 바우처 안내 */}
       <div className="max-w-4xl mx-auto bg-[#FDFD96]/40 border border-[#FDFD96] rounded-[2rem] p-8 md:p-12 text-center shadow-sm relative overflow-hidden mb-20">
         <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-200 rounded-bl-full opacity-20 transform translate-x-10 -translate-y-10"></div>
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-200 rounded-tr-full opacity-20 transform -translate-x-5 translate-y-5"></div>
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-dream-blue rounded-tr-full opacity-20 transform -translate-x-5 translate-y-5"></div>
         
         <ShieldCheck className="w-12 h-12 text-dream-blue mx-auto mb-4 relative z-10" />
         <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-4 border-b border-yellow-300 inline-block px-4 md:px-10 relative z-10">정부 지원 바우처 지정 우수 기관</h2>
