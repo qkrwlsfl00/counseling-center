@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div className="mx-auto grid max-w-6xl items-stretch gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-14">
         <div className="relative isolate flex flex-col justify-center py-4 text-left animate-fade-in-up md:py-8">
           <HeroIllustration compact />
-          <h1 className="relative z-10 mb-7 max-w-3xl text-balance text-4xl font-extrabold leading-[1.14] tracking-[-0.035em] text-slate-900 md:text-[3.45rem] lg:text-[3.7rem]">
+          <h1 className="relative z-10 mb-7 max-w-3xl text-balance text-4xl font-extrabold leading-[1.14] tracking-[-0.02em] text-slate-900 md:text-[3.45rem] lg:text-[3.7rem]">
             아이를 먼저 이해하고,
             <br />
             <span className="text-dream-blue">필요한 도움을 함께 찾습니다</span>

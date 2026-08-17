@@ -59,7 +59,7 @@ const ProgramSection = () => {
     <section className="border-b border-slate-100 bg-white px-4 py-20 md:py-24">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 max-w-2xl text-left md:mb-14">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">필요한 상담과 프로그램을 살펴보세요</h2>
+          <h2 className="mb-4 text-3xl font-bold tracking-[-0.01em] text-slate-900 md:text-4xl">필요한 상담과 프로그램을 살펴보세요</h2>
           <p className="text-pretty text-base font-medium leading-7 text-slate-600 md:text-lg">
             어떤 상담이나 프로그램이 맞는지 미리 정하지 않아도 괜찮습니다. 첫 상담 후 현재 어려움과 목표에 맞춰 안내합니다.
           </p>

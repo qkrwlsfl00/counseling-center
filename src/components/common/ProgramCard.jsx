@@ -10,7 +10,7 @@ const ProgramCard = ({ icon: Icon, title, desc, color, href, className = '' }) =
       <Icon className="h-6 w-6 text-slate-700" strokeWidth={1.8} />
     </div>
     <div>
-      <h3 className="mb-2 text-lg font-bold text-slate-800">{title}</h3>
+      <h3 className="mb-2 text-lg font-bold tracking-[0.01em] text-slate-800">{title}</h3>
       <p className="text-sm font-medium leading-6 text-slate-600">{desc}</p>
     </div>
     <span className="mt-1 text-lg text-slate-400 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>

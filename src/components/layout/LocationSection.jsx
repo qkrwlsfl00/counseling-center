@@ -64,7 +64,7 @@ const LocationSection = () => {
     <section id="location" className="w-full bg-[#fdfdfc] py-24 px-4 border-t border-gray-100">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-4 animate-fade-in">오시는 길</h2>
+          <h2 className="text-3xl font-extrabold tracking-[0.01em] text-gray-900 mb-4 animate-fade-in">오시는 길</h2>
         </div>
 
         {/* Tabs */}
@@ -74,7 +74,7 @@ const LocationSection = () => {
               <button
                 key={idx}
                 onClick={() => setActiveTab(idx)}
-                className={`flex-1 text-center py-2.5 px-3 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm md:text-base font-bold transition-all duration-300 truncate ${
+                className={`flex-1 text-center py-2.5 px-3 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm md:text-base font-bold tracking-[0.01em] transition-all duration-300 truncate ${
                   activeTab === idx
                     ? 'bg-[#8BA888] text-white shadow-md'
                     : 'text-gray-500 hover:text-gray-800'
@@ -90,14 +90,14 @@ const LocationSection = () => {
           {/* Info Side */}
           <div className="md:col-span-4 flex flex-col justify-center space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">{branch.name}</h3>
+              <h3 className="text-2xl font-bold tracking-[0.01em] text-gray-900 mb-6">{branch.name}</h3>
               
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-10 h-10 rounded-full bg-[#F2FCF1] flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-[#8BA888]" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-500 mb-1">주소</p>
+                  <p className="text-sm font-bold tracking-[0.01em] text-gray-500 mb-1">주소</p>
                   <p className="text-gray-800 font-medium leading-relaxed">{branch.address}</p>
                 </div>
               </div>
@@ -107,8 +107,8 @@ const LocationSection = () => {
                   <Phone className="w-5 h-5 text-[#8BA888]" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-500 mb-1">전화번호</p>
-                  <a href={`tel:${branch.phone}`} className="text-gray-800 font-bold hover:text-[#8BA888] transition-colors">{branch.phone}</a>
+                  <p className="text-sm font-bold tracking-[0.01em] text-gray-500 mb-1">전화번호</p>
+                  <a href={`tel:${branch.phone}`} className="text-gray-800 font-bold tracking-[0.01em] hover:text-[#8BA888] transition-colors">{branch.phone}</a>
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ const LocationSection = () => {
                 href={branch.link} 
                 target="_blank" 
                 rel="noreferrer"
-                className="inline-flex items-center justify-center w-full bg-gray-50 hover:bg-[#8BA888] hover:text-white text-gray-700 font-bold py-3.5 rounded-xl transition-colors shadow-sm"
+                className="inline-flex items-center justify-center w-full bg-gray-50 hover:bg-[#8BA888] hover:text-white text-gray-700 font-bold tracking-[0.01em] py-3.5 rounded-xl transition-colors shadow-sm"
               >
                 카카오맵 길찾기
               </a>

@@ -7,7 +7,7 @@ const CenterTourSection = () => {
     <section className="border-b border-slate-100 bg-white px-4 py-20 md:py-24">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 max-w-2xl text-left">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">센터 둘러보기</h2>
+          <h2 className="mb-4 text-3xl font-bold tracking-[-0.01em] text-slate-900 md:text-4xl">센터 둘러보기</h2>
           <p className="text-base font-medium leading-7 text-slate-600 md:text-lg">방문 전에 상담실과 활동 공간을 사진으로 미리 만나보세요.</p>
         </div>
 
